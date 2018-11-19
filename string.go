@@ -24,8 +24,10 @@ func stringValue(value interface{}) string {
 		return strconv.FormatUint(vValue.Uint(), 10)
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
 		return strconv.FormatInt(vValue.Int(), 10)
-	case reflect.Float32, reflect.Float64:
-		return strconv.FormatFloat(vValue.Float(), 'f', 6, 32)
+	case reflect.Float32:
+		return strconv.FormatFloat(vValue.Float(), 'f', -1, 32)
+	case reflect.Float64:
+		return strconv.FormatFloat(vValue.Float(), 'f', -1, 64)
 	case reflect.String:
 		return vValue.String()
 	}
