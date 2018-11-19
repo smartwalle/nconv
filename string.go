@@ -1,8 +1,9 @@
 package conv4go
 
 import (
-	"strconv"
+	"fmt"
 	"reflect"
+	"strconv"
 )
 
 func String(value interface{}) string {
@@ -14,12 +15,12 @@ func String(value interface{}) string {
 
 func stringValue(value interface{}) string {
 	var vValue = reflect.ValueOf(value)
-	var vKind =vValue.Kind()
+	var vKind = vValue.Kind()
 
 	switch vKind {
 	case reflect.Bool:
 		return strconv.FormatBool(vValue.Bool())
-	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64, reflect.Uintptr:
+	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
 		return strconv.FormatUint(vValue.Uint(), 10)
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
 		return strconv.FormatInt(vValue.Int(), 10)
@@ -28,5 +29,5 @@ func stringValue(value interface{}) string {
 	case reflect.String:
 		return vValue.String()
 	}
-	return ""
+	return fmt.Sprintf("%v", value)
 }

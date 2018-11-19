@@ -22,7 +22,7 @@ func Bool(value interface{}) bool {
 			return true
 		}
 		return false
-	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64, reflect.Uintptr:
+	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
 		if vValue.Uint() == 1 {
 			return true
 		}
