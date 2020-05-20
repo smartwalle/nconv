@@ -11,6 +11,7 @@ func TestString(t *testing.T) {
 		{1, "1"},
 		{1.1, "1.1"},
 		{true, "true"},
+		{3414416614257328130, "3414416614257328130"},
 	}
 
 	for _, tt := range tests {

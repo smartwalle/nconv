@@ -21,9 +21,9 @@ func Float64(value interface{}) float64 {
 
 func floatValue(value interface{}) float64 {
 	var vValue = reflect.ValueOf(value)
-	var kind = vValue.Kind()
+	var vKind = vValue.Kind()
 
-	switch kind {
+	switch vKind {
 	case reflect.Bool:
 		var v = vValue.Bool()
 		if v {
