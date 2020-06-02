@@ -38,45 +38,72 @@ func Int64(value interface{}) int64 {
 	if v, ok := value.(int64); ok {
 		return v
 	}
-	return int64(intValue(value))
+	return intValue(value)
 }
 
 func Uint(value interface{}) uint {
 	if v, ok := value.(uint); ok {
 		return v
 	}
-	return uint(intValue(value))
+	return uint(uintValue(value))
 }
 
 func Uint8(value interface{}) uint8 {
 	if v, ok := value.(uint8); ok {
 		return v
 	}
-	return uint8(intValue(value))
+	return uint8(uintValue(value))
 }
 
 func Uint16(value interface{}) uint16 {
 	if v, ok := value.(uint16); ok {
 		return v
 	}
-	return uint16(intValue(value))
+	return uint16(uintValue(value))
 }
 
 func Uint32(value interface{}) uint32 {
 	if v, ok := value.(uint32); ok {
 		return v
 	}
-	return uint32(intValue(value))
+	return uint32(uintValue(value))
 }
 
 func Uint64(value interface{}) uint64 {
 	if v, ok := value.(uint64); ok {
 		return v
 	}
-	return intValue(value)
+	return uintValue(value)
 }
 
-func intValue(value interface{}) uint64 {
+func intValue(value interface{}) int64 {
+	var vValue = reflect.ValueOf(value)
+	var vKind = vValue.Kind()
+
+	switch vKind {
+	case reflect.Bool:
+		var v = vValue.Bool()
+		if v {
+			return 1
+		}
+		return 0
+	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
+		return int64(vValue.Uint())
+	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
+		return vValue.Int()
+	case reflect.Float32, reflect.Float64:
+		return int64(vValue.Float())
+	case reflect.String:
+		var vList = strings.Split(vValue.String(), ".")
+		var f, err = strconv.ParseInt(vList[0], 10, 64)
+		if err == nil {
+			return f
+		}
+	}
+	return 0.0
+}
+
+func uintValue(value interface{}) uint64 {
 	var vValue = reflect.ValueOf(value)
 	var vKind = vValue.Kind()
 
