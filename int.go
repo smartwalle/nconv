@@ -100,7 +100,7 @@ func intValue(value interface{}) int64 {
 			return f
 		}
 	}
-	return 0.0
+	return 0
 }
 
 func uintValue(value interface{}) uint64 {
@@ -127,5 +127,5 @@ func uintValue(value interface{}) uint64 {
 			return f
 		}
 	}
-	return 0.0
+	return 0
 }
