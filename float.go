@@ -1,4 +1,4 @@
-package conv4go
+package nconv
 
 import (
 	"reflect"

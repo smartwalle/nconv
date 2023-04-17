@@ -1,6 +1,7 @@
-package conv4go
+package nconv_test
 
 import (
+	"github.com/smartwalle/nconv"
 	"math"
 	"testing"
 )
@@ -29,7 +30,7 @@ func TestInt(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		if actual := Int(tt.v); actual != tt.r {
+		if actual := nconv.Int(tt.v); actual != tt.r {
 			t.Errorf("把 %v 转换为 int, 期望获得 %d, 实际获得  %d", tt.v, tt.r, actual)
 		}
 	}
@@ -59,7 +60,7 @@ func TestInt64(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		if actual := Int64(tt.v); actual != tt.r {
+		if actual := nconv.Int64(tt.v); actual != tt.r {
 			t.Errorf("把 %v 转换为 int64, 期望获得 %d, 实际获得  %d", tt.v, tt.r, actual)
 		}
 	}
@@ -85,7 +86,7 @@ func TestUint(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		if actual := Uint(tt.v); actual != tt.r {
+		if actual := nconv.Uint(tt.v); actual != tt.r {
 			t.Errorf("把 %v 转换为 uint32, 期望获得 %d, 实际获得  %d", tt.v, tt.r, actual)
 		}
 	}
@@ -112,7 +113,7 @@ func TestUint8(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		if actual := Uint8(tt.v); actual != tt.r {
+		if actual := nconv.Uint8(tt.v); actual != tt.r {
 			t.Errorf("把 %v 转换为 uint8, 期望获得 %d, 实际获得  %d", tt.v, tt.r, actual)
 		}
 	}
@@ -139,7 +140,7 @@ func TestUint16(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		if actual := Uint16(tt.v); actual != tt.r {
+		if actual := nconv.Uint16(tt.v); actual != tt.r {
 			t.Errorf("把 %v 转换为 uint16, 期望获得 %d, 实际获得  %d", tt.v, tt.r, actual)
 		}
 	}
@@ -166,7 +167,7 @@ func TestUint32(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		if actual := Uint32(tt.v); actual != tt.r {
+		if actual := nconv.Uint32(tt.v); actual != tt.r {
 			t.Errorf("把 %v 转换为 uint32, 期望获得 %d, 实际获得  %d", tt.v, tt.r, actual)
 		}
 	}
@@ -193,7 +194,7 @@ func TestUint64(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		if actual := Uint64(tt.v); actual != tt.r {
+		if actual := nconv.Uint64(tt.v); actual != tt.r {
 			t.Errorf("把 %v 转换为 Uint64, 期望获得 %d, 实际获得  %d", tt.v, tt.r, actual)
 		}
 	}

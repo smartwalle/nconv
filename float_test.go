@@ -1,6 +1,9 @@
-package conv4go
+package nconv_test
 
-import "testing"
+import (
+	"github.com/smartwalle/nconv"
+	"testing"
+)
 
 func TestFloat64(t *testing.T) {
 	var tests = []struct {
@@ -16,7 +19,7 @@ func TestFloat64(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		if actual := Float64(tt.v); actual != tt.r {
+		if actual := nconv.Float64(tt.v); actual != tt.r {
 			t.Errorf("把 %v 转换为 float64, 期望获得 %f, 实际获得  %f", tt.v, tt.r, actual)
 		}
 	}

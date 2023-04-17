@@ -1,6 +1,9 @@
-package conv4go
+package nconv_test
 
-import "testing"
+import (
+	"github.com/smartwalle/nconv"
+	"testing"
+)
 
 func TestString(t *testing.T) {
 	var tests = []struct {
@@ -15,7 +18,7 @@ func TestString(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		if actual := String(tt.v); actual != tt.r {
+		if actual := nconv.String(tt.v); actual != tt.r {
 			t.Errorf("把 %v 转换为 string, 期望获得 %v, 实际获得  %v", tt.v, tt.r, actual)
 		}
 	}

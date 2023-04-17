@@ -1,6 +1,9 @@
-package conv4go
+package nconv_test
 
-import "testing"
+import (
+	"github.com/smartwalle/nconv"
+	"testing"
+)
 
 func TestBool(t *testing.T) {
 	var tests = []struct {
@@ -20,7 +23,7 @@ func TestBool(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		if actual := Bool(tt.v); actual != tt.r {
+		if actual := nconv.Bool(tt.v); actual != tt.r {
 			t.Errorf("把 %v 转换为 bool, 期望获得 %v, 实际获得  %v", tt.v, tt.r, actual)
 		}
 	}
