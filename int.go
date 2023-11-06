@@ -1,131 +1,465 @@
 package nconv
 
 import (
-	"reflect"
 	"strconv"
-	"strings"
 )
 
-func Int(value interface{}) int {
-	if v, ok := value.(int); ok {
-		return v
+func trim(s string) string {
+	for i := 0; i < len(s); i++ {
+		if s[i] == '.' {
+			return s[0:i]
+		}
 	}
-	return int(intValue(value))
+	return s
+}
+
+func Int(value interface{}) int {
+	switch rValue := value.(type) {
+	case int:
+		return rValue
+	case int8:
+		return int(rValue)
+	case int16:
+		return int(rValue)
+	case int32:
+		return int(rValue)
+	case int64:
+		return int(rValue)
+	case uint:
+		return int(rValue)
+	case uint8:
+		return int(rValue)
+	case uint16:
+		return int(rValue)
+	case uint32:
+		return int(rValue)
+	case uint64:
+		return int(rValue)
+	case uintptr:
+		return int(rValue)
+	case float32:
+		return int(rValue)
+	case float64:
+		return int(rValue)
+	case bool:
+		if rValue {
+			return 1
+		}
+		return 0
+	case string:
+		var nValue, _ = strconv.ParseInt(trim(rValue), 0, 0)
+		return int(nValue)
+	default:
+		return 0
+	}
 }
 
 func Int8(value interface{}) int8 {
-	if v, ok := value.(int8); ok {
-		return v
+	switch rValue := value.(type) {
+	case int:
+		return int8(rValue)
+	case int8:
+		return rValue
+	case int16:
+		return int8(rValue)
+	case int32:
+		return int8(rValue)
+	case int64:
+		return int8(rValue)
+	case uint:
+		return int8(rValue)
+	case uint8:
+		return int8(rValue)
+	case uint16:
+		return int8(rValue)
+	case uint32:
+		return int8(rValue)
+	case uint64:
+		return int8(rValue)
+	case uintptr:
+		return int8(rValue)
+	case float32:
+		return int8(rValue)
+	case float64:
+		return int8(rValue)
+	case bool:
+		if rValue {
+			return 1
+		}
+		return 0
+	case string:
+		var nValue, _ = strconv.ParseInt(trim(rValue), 0, 0)
+		return int8(nValue)
+	default:
+		return 0
 	}
-	return int8(intValue(value))
 }
 
 func Int16(value interface{}) int16 {
-	if v, ok := value.(int16); ok {
-		return v
+	switch rValue := value.(type) {
+	case int:
+		return int16(rValue)
+	case int8:
+		return int16(rValue)
+	case int16:
+		return rValue
+	case int32:
+		return int16(rValue)
+	case int64:
+		return int16(rValue)
+	case uint:
+		return int16(rValue)
+	case uint8:
+		return int16(rValue)
+	case uint16:
+		return int16(rValue)
+	case uint32:
+		return int16(rValue)
+	case uint64:
+		return int16(rValue)
+	case uintptr:
+		return int16(rValue)
+	case float32:
+		return int16(rValue)
+	case float64:
+		return int16(rValue)
+	case bool:
+		if rValue {
+			return 1
+		}
+		return 0
+	case string:
+		var nValue, _ = strconv.ParseInt(trim(rValue), 0, 0)
+		return int16(nValue)
+	default:
+		return 0
 	}
-	return int16(intValue(value))
 }
 
 func Int32(value interface{}) int32 {
-	if v, ok := value.(int32); ok {
-		return v
+	switch rValue := value.(type) {
+	case int:
+		return int32(rValue)
+	case int8:
+		return int32(rValue)
+	case int16:
+		return int32(rValue)
+	case int32:
+		return rValue
+	case int64:
+		return int32(rValue)
+	case uint:
+		return int32(rValue)
+	case uint8:
+		return int32(rValue)
+	case uint16:
+		return int32(rValue)
+	case uint32:
+		return int32(rValue)
+	case uint64:
+		return int32(rValue)
+	case uintptr:
+		return int32(rValue)
+	case float32:
+		return int32(rValue)
+	case float64:
+		return int32(rValue)
+	case bool:
+		if rValue {
+			return 1
+		}
+		return 0
+	case string:
+		var nValue, _ = strconv.ParseInt(trim(rValue), 0, 0)
+		return int32(nValue)
+	default:
+		return 0
 	}
-	return int32(intValue(value))
 }
 
 func Int64(value interface{}) int64 {
-	if v, ok := value.(int64); ok {
-		return v
+	switch rValue := value.(type) {
+	case int:
+		return int64(rValue)
+	case int8:
+		return int64(rValue)
+	case int16:
+		return int64(rValue)
+	case int32:
+		return int64(rValue)
+	case int64:
+		return rValue
+	case uint:
+		return int64(rValue)
+	case uint8:
+		return int64(rValue)
+	case uint16:
+		return int64(rValue)
+	case uint32:
+		return int64(rValue)
+	case uint64:
+		return int64(rValue)
+	case uintptr:
+		return int64(rValue)
+	case float32:
+		return int64(rValue)
+	case float64:
+		return int64(rValue)
+	case bool:
+		if rValue {
+			return 1
+		}
+		return 0
+	case string:
+		var nValue, _ = strconv.ParseInt(trim(rValue), 0, 0)
+		return nValue
+	default:
+		return 0
 	}
-	return intValue(value)
 }
 
 func Uint(value interface{}) uint {
-	if v, ok := value.(uint); ok {
-		return v
+	switch rValue := value.(type) {
+	case int:
+		return uint(rValue)
+	case int8:
+		return uint(rValue)
+	case int16:
+		return uint(rValue)
+	case int32:
+		return uint(rValue)
+	case int64:
+		return uint(rValue)
+	case uint:
+		return rValue
+	case uint8:
+		return uint(rValue)
+	case uint16:
+		return uint(rValue)
+	case uint32:
+		return uint(rValue)
+	case uint64:
+		return uint(rValue)
+	case uintptr:
+		return uint(rValue)
+	case float32:
+		return uint(rValue)
+	case float64:
+		return uint(rValue)
+	case bool:
+		if rValue {
+			return 1
+		}
+		return 0
+	case string:
+		var nValue, _ = strconv.ParseUint(trim(rValue), 0, 0)
+		return uint(nValue)
+	default:
+		return 0
 	}
-	return uint(uintValue(value))
 }
 
 func Uint8(value interface{}) uint8 {
-	if v, ok := value.(uint8); ok {
-		return v
+	switch rValue := value.(type) {
+	case int:
+		return uint8(rValue)
+	case int8:
+		return uint8(rValue)
+	case int16:
+		return uint8(rValue)
+	case int32:
+		return uint8(rValue)
+	case int64:
+		return uint8(rValue)
+	case uint:
+		return uint8(rValue)
+	case uint8:
+		return rValue
+	case uint16:
+		return uint8(rValue)
+	case uint32:
+		return uint8(rValue)
+	case uint64:
+		return uint8(rValue)
+	case uintptr:
+		return uint8(rValue)
+	case float32:
+		return uint8(rValue)
+	case float64:
+		return uint8(rValue)
+	case bool:
+		if rValue {
+			return 1
+		}
+		return 0
+	case string:
+		var nValue, _ = strconv.ParseUint(trim(rValue), 0, 0)
+		return uint8(nValue)
+	default:
+		return 0
 	}
-	return uint8(uintValue(value))
 }
 
 func Uint16(value interface{}) uint16 {
-	if v, ok := value.(uint16); ok {
-		return v
+	switch rValue := value.(type) {
+	case int:
+		return uint16(rValue)
+	case int8:
+		return uint16(rValue)
+	case int16:
+		return uint16(rValue)
+	case int32:
+		return uint16(rValue)
+	case int64:
+		return uint16(rValue)
+	case uint:
+		return uint16(rValue)
+	case uint8:
+		return uint16(rValue)
+	case uint16:
+		return rValue
+	case uint32:
+		return uint16(rValue)
+	case uint64:
+		return uint16(rValue)
+	case uintptr:
+		return uint16(rValue)
+	case float32:
+		return uint16(rValue)
+	case float64:
+		return uint16(rValue)
+	case bool:
+		if rValue {
+			return 1
+		}
+		return 0
+	case string:
+		var nValue, _ = strconv.ParseUint(trim(rValue), 0, 0)
+		return uint16(nValue)
+	default:
+		return 0
 	}
-	return uint16(uintValue(value))
 }
 
 func Uint32(value interface{}) uint32 {
-	if v, ok := value.(uint32); ok {
-		return v
+	switch rValue := value.(type) {
+	case int:
+		return uint32(rValue)
+	case int8:
+		return uint32(rValue)
+	case int16:
+		return uint32(rValue)
+	case int32:
+		return uint32(rValue)
+	case int64:
+		return uint32(rValue)
+	case uint:
+		return uint32(rValue)
+	case uint8:
+		return uint32(rValue)
+	case uint16:
+		return uint32(rValue)
+	case uint32:
+		return rValue
+	case uint64:
+		return uint32(rValue)
+	case uintptr:
+		return uint32(rValue)
+	case float32:
+		return uint32(rValue)
+	case float64:
+		return uint32(rValue)
+	case bool:
+		if rValue {
+			return 1
+		}
+		return 0
+	case string:
+		var nValue, _ = strconv.ParseUint(trim(rValue), 0, 0)
+		return uint32(nValue)
+	default:
+		return 0
 	}
-	return uint32(uintValue(value))
 }
 
 func Uint64(value interface{}) uint64 {
-	if v, ok := value.(uint64); ok {
-		return v
-	}
-	return uintValue(value)
-}
-
-func intValue(value interface{}) int64 {
-	var vValue = reflect.ValueOf(value)
-	var vKind = vValue.Kind()
-
-	switch vKind {
-	case reflect.Bool:
-		var v = vValue.Bool()
-		if v {
+	switch rValue := value.(type) {
+	case int:
+		return uint64(rValue)
+	case int8:
+		return uint64(rValue)
+	case int16:
+		return uint64(rValue)
+	case int32:
+		return uint64(rValue)
+	case int64:
+		return uint64(rValue)
+	case uint:
+		return uint64(rValue)
+	case uint8:
+		return uint64(rValue)
+	case uint16:
+		return uint64(rValue)
+	case uint32:
+		return uint64(rValue)
+	case uint64:
+		return rValue
+	case uintptr:
+		return uint64(rValue)
+	case float32:
+		return uint64(rValue)
+	case float64:
+		return uint64(rValue)
+	case bool:
+		if rValue {
 			return 1
 		}
 		return 0
-	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
-		return int64(vValue.Uint())
-	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
-		return vValue.Int()
-	case reflect.Float32, reflect.Float64:
-		return int64(vValue.Float())
-	case reflect.String:
-		var vList = strings.Split(vValue.String(), ".")
-		var f, err = strconv.ParseInt(vList[0], 10, 64)
-		if err == nil {
-			return f
-		}
+	case string:
+		var nValue, _ = strconv.ParseUint(trim(rValue), 0, 0)
+		return nValue
+	default:
+		return 0
 	}
-	return 0
 }
 
-func uintValue(value interface{}) uint64 {
-	var vValue = reflect.ValueOf(value)
-	var vKind = vValue.Kind()
-
-	switch vKind {
-	case reflect.Bool:
-		var v = vValue.Bool()
-		if v {
+func Uintptr(value interface{}) uintptr {
+	switch rValue := value.(type) {
+	case int:
+		return uintptr(rValue)
+	case int8:
+		return uintptr(rValue)
+	case int16:
+		return uintptr(rValue)
+	case int32:
+		return uintptr(rValue)
+	case int64:
+		return uintptr(rValue)
+	case uint:
+		return uintptr(rValue)
+	case uint8:
+		return uintptr(rValue)
+	case uint16:
+		return uintptr(rValue)
+	case uint32:
+		return uintptr(rValue)
+	case uint64:
+		return uintptr(rValue)
+	case uintptr:
+		return rValue
+	case float32:
+		return uintptr(rValue)
+	case float64:
+		return uintptr(rValue)
+	case bool:
+		if rValue {
 			return 1
 		}
 		return 0
-	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
-		return vValue.Uint()
-	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
-		return uint64(vValue.Int())
-	case reflect.Float32, reflect.Float64:
-		return uint64(vValue.Float())
-	case reflect.String:
-		var vList = strings.Split(vValue.String(), ".")
-		var f, err = strconv.ParseUint(vList[0], 10, 64)
-		if err == nil {
-			return f
-		}
+	case string:
+		var nValue, _ = strconv.ParseUint(trim(rValue), 0, 0)
+		return uintptr(nValue)
+	default:
+		return 0
 	}
-	return 0
 }

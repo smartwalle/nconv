@@ -11,15 +11,15 @@ func TestBool(t *testing.T) {
 		r bool
 	}{
 		{"true", true},
-		{"yes", true},
-		{"on", true},
 		{"t", true},
-		{"y", true},
 		{"1", true},
 		{"0", false},
 		{"2", false},
 		{"false", false},
-		{"no", false},
+		{0, false},
+		{2, true},
+		{-2, true},
+		{1, true},
 	}
 
 	for _, tt := range tests {

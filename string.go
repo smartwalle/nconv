@@ -1,35 +1,42 @@
 package nconv
 
 import (
-	"fmt"
-	"reflect"
 	"strconv"
 )
 
 func String(value interface{}) string {
-	if v, ok := value.(string); ok {
-		return v
+	switch rValue := value.(type) {
+	case int:
+		return strconv.FormatInt(int64(rValue), 10)
+	case int8:
+		return strconv.FormatInt(int64(rValue), 10)
+	case int16:
+		return strconv.FormatInt(int64(rValue), 10)
+	case int32:
+		return strconv.FormatInt(int64(rValue), 10)
+	case int64:
+		return strconv.FormatInt(rValue, 10)
+	case uint:
+		return strconv.FormatUint(uint64(rValue), 10)
+	case uint8:
+		return strconv.FormatUint(uint64(rValue), 10)
+	case uint16:
+		return strconv.FormatUint(uint64(rValue), 10)
+	case uint32:
+		return strconv.FormatUint(uint64(rValue), 10)
+	case uint64:
+		return strconv.FormatUint(rValue, 10)
+	case uintptr:
+		return strconv.FormatUint(uint64(rValue), 10)
+	case float32:
+		return strconv.FormatFloat(float64(rValue), 'f', -1, 32)
+	case float64:
+		return strconv.FormatFloat(rValue, 'f', -1, 64)
+	case bool:
+		return strconv.FormatBool(rValue)
+	case string:
+		return rValue
+	default:
+		return ""
 	}
-	return stringValue(value)
-}
-
-func stringValue(value interface{}) string {
-	var vValue = reflect.ValueOf(value)
-	var vKind = vValue.Kind()
-
-	switch vKind {
-	case reflect.Bool:
-		return strconv.FormatBool(vValue.Bool())
-	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
-		return strconv.FormatUint(vValue.Uint(), 10)
-	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
-		return strconv.FormatInt(vValue.Int(), 10)
-	case reflect.Float32:
-		return strconv.FormatFloat(vValue.Float(), 'f', -1, 32)
-	case reflect.Float64:
-		return strconv.FormatFloat(vValue.Float(), 'f', -1, 64)
-	case reflect.String:
-		return vValue.String()
-	}
-	return fmt.Sprintf("%v", value)
 }
